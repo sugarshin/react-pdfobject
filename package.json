@@ -1,0 +1,62 @@
+{
+  "name": "react-pdfobject",
+  "version": "0.0.0",
+  "description": "A React component for PDFObject",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": ["lib"],
+  "scripts": {
+    "test": "jest --config jest.config.json",
+    "test:coverage": "npm test -- --coverage",
+    "coverage-report-upload": "codecov",
+    "clean:lib": "if [ -d lib ]; then rm -rf lib; fi",
+    "clean": "npm run clean:lib",
+    "precompile": "npm run clean",
+    "compile:commonjs": "tsc --outDir lib --module commonjs",
+    "compile": "npm run compile:commonjs",
+    "_lint": "tslint -s node_modules/custom-tslint-formatters/formatters -t grouped",
+    "lint": "npm run _lint -- -p tsconfig.json",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:lint-staged": "npm run _lint -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sugarshin/react-pdfobject.git"
+  },
+  "keywords": [
+    "react",
+    "pdfobject"
+  ],
+  "author": "sugarshin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sugarshin/react-pdfobject/issues"
+  },
+  "homepage": "https://github.com/sugarshin/react-pdfobject#readme",
+  "devDependencies": {
+    "@types/enzyme": "^3.1.15",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/jest": "^23.3.10",
+    "@types/pdfobject": "^2.0.6",
+    "codecov": "^3.1.0",
+    "custom-tslint-formatters": "^2.4.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
+    "husky": "^1.2.1",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "pdfobject": "^2.1.1"
+  }
+}

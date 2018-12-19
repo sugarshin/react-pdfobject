@@ -1,0 +1,78 @@
+version: 2
+
+references:
+  defaults: &defaults
+    working_directory: ~/repo
+  nodejs: &nodejs
+    <<: *defaults
+    docker:
+      - image: circleci/node:10.14.2
+  restore_npm_cache: &restore_npm_cache
+    name: Restore Cache - Dependency Modules
+    keys:
+      - v1-npm-deps-{{ checksum "package-lock.json" }}
+      - v1-npm-deps-
+  save_npm_cache: &save_npm_cache
+    name: Save Cache - Dependency Modules
+    key: v1-npm-deps-{{ checksum "package-lock.json" }}
+    paths:
+      - ./node_modules
+
+jobs:
+  test:
+    <<: *nodejs
+    steps:
+      - checkout
+      - restore_cache: *restore_npm_cache
+      - run: npm install
+      - save_cache: *save_npm_cache
+      - run:
+          name: Lint
+          command: npm run lint
+      - run:
+          name: Tests
+          command: npm run test:coverage
+      - run:
+          name: Upload Coverage Report
+          command: npm run coverage-report-upload
+
+  build:
+    <<: *nodejs
+    steps:
+      - checkout
+      - restore_cache: *restore_npm_cache
+      - run: npm install
+      - save_cache: *save_npm_cache
+      - run:
+          name: Compile
+          command: NODE_ENV=production npm run compile
+      - persist_to_workspace:
+          root: lib
+          paths: .
+  
+  publish:
+    <<: *nodejs
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo/lib
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" >> ~/.npmrc
+      - run:
+          name: Publish package to npm and tagging
+          command: /bin/bash .circleci/publish-and-tagging.sh
+
+workflows:
+  version: 2
+  test_build_publish:
+    jobs:
+      - test
+      - build
+      - publish:
+          requires:
+            - test
+            - build
+          filters:
+            branches:
+              only: master
