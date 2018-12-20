@@ -1,5 +1,5 @@
 import * as React from 'react';
-import pdfobject = require('pdfobject');
+import * as pdfobject from 'pdfobject';
 
 export interface Props {
   url: string;
@@ -21,7 +21,11 @@ export class PDFObject extends React.PureComponent<Props> {
 
   public componentDidMount() {
     const { url, containerId, containerProps, ...options } = this.props;
-    pdfobject.embed(url, `#${containerId}`, options);
+
+    // for the SSR
+    if (pdfobject) {
+      pdfobject.embed(url, `#${containerId}`, options);
+    }
   }
 
   public render() {

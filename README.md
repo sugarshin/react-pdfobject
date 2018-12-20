@@ -21,7 +21,7 @@ TBD
 
 © sugarshin
 
-[circleci-image]: https://circleci.com/gh/sugarshin/react-pdfobject/tree/master.svg?style=svg&circle-token=
+[circleci-image]: https://circleci.com/gh/sugarshin/react-pdfobject/tree/master.svg?style=svg&circle-token=5faa6707fd0e1803cf6e01a16b6bacaba92b23b3
 [circleci-url]: https://circleci.com/gh/sugarshin/react-pdfobject/tree/master
 [codecov-image]: https://codecov.io/gh/sugarshin/react-pdfobject/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/sugarshin/react-pdfobject
