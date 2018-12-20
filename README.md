@@ -13,7 +13,29 @@ npm install react-pdfobject
 
 ## Usage
 
-TBD
+```ts
+import * as React from 'react'
+import { PDFObject } from 'react-pdfobject'
+
+<PDFObject url="path/to/example.pdf" />
+```
+
+### Props
+
+```ts
+interface Props {
+  url: string;
+  containerId?: string;
+  containerProps?: React.HTMLProps<HTMLDivElement>;
+  width?: string;
+  height?: string;
+  page?: string | number;
+  id?: string;
+  fallbackLink?: string | false;
+}
+```
+
+ref: https://pdfobject.com/#api
 
 ## License
 
