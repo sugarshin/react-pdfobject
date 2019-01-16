@@ -1,6 +1,31 @@
 import * as React from 'react';
 import * as pdfobject from 'pdfobject';
 
+export type PageMode = 'bookmarks' | 'thumbs' | 'none';
+
+export type ViewMode =
+  | 'Fit'
+  | 'FitH'
+  | 'FitH,top'
+  | 'FitV'
+  | 'FitV,left'
+  | 'FitB'
+  | 'FitBH'
+  | 'FitBH,top'
+  | 'FitBV'
+  | 'FitBV,left';
+
+export type ZoomMode = 'scale' | 'scale,left,top';
+
+// https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf
+export interface OpenParams {
+  page?: number;
+  zoom?: ZoomMode;
+  nameddest?: string;
+  pagemode?: PageMode;
+  view?: ViewMode;
+}
+
 export interface Props {
   url: string;
   containerId?: string;
@@ -10,6 +35,10 @@ export interface Props {
   page?: string | number;
   id?: string;
   fallbackLink?: string | false;
+  pdfOpenParams?: OpenParams;
+  PDFJS_URL?: string;
+  forcePDFJS: boolean;
+  assumptionMode: boolean;
 }
 
 export class PDFObject extends React.PureComponent<Props> {
@@ -17,6 +46,8 @@ export class PDFObject extends React.PureComponent<Props> {
     width: '100%',
     height: '100%',
     containerId: 'pdfobject',
+    forcePDFJS: false,
+    assumptionMode: true,
   };
 
   public componentDidMount() {
