@@ -35,7 +35,7 @@
   "homepage": "https://github.com/sugarshin/react-pdfobject#readme",
   "devDependencies": {
     "@types/enzyme": "3.1.17",
-    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/enzyme-adapter-react-16": "1.0.4",
     "@types/jest": "23.3.14",
     "@types/pdfobject": "2.0.6",
     "codecov": "3.2.0",
