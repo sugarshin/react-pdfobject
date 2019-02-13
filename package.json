@@ -38,7 +38,7 @@
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "23.3.14",
     "@types/pdfobject": "2.0.6",
-    "codecov": "3.1.0",
+    "codecov": "3.2.0",
     "custom-tslint-formatters": "2.4.0",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.9.1",
