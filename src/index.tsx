@@ -42,11 +42,6 @@ export interface Props {
 }
 
 export class PDFObject extends React.PureComponent<Props> {
-  public constructor(props){
-    super(props);
-    this.embed = this.embed.bind(this);
-  }
-  
   public static defaultProps = {
     width: '100%',
     height: '100%',
@@ -54,8 +49,12 @@ export class PDFObject extends React.PureComponent<Props> {
     forcePDFJS: false,
     assumptionMode: true,
   };
-  
-  public embed(){
+  public constructor(props: Props) {
+    super(props);
+    this.embed = this.embed.bind(this);
+  }
+
+  public embed() {
     const { url, containerId, containerProps, ...options } = this.props;
     if (pdfobject) {
       pdfobject.embed(url, `#${containerId}`, options);
@@ -66,10 +65,10 @@ export class PDFObject extends React.PureComponent<Props> {
     // for the SSR
     this.embed();
   }
-  
-  public componentDidUpdate(prevProps){
-    // check for different props.url 
-    if(prevProps.url !== this.props.url) {
+
+  public componentDidUpdate(prevProps: Props) {
+    // check for different props.url
+    if (prevProps.url !== this.props.url) {
       this.embed();
     }
   }
