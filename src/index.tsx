@@ -49,12 +49,8 @@ export class PDFObject extends React.PureComponent<Props> {
     forcePDFJS: false,
     assumptionMode: true,
   };
-  public constructor(props: Props) {
-    super(props);
-    this.embed = this.embed.bind(this);
-  }
 
-  public embed() {
+  embed = () => {
     const { url, containerId, containerProps, ...options } = this.props;
     if (pdfobject) {
       pdfobject.embed(url, `#${containerId}`, options);
@@ -62,7 +58,6 @@ export class PDFObject extends React.PureComponent<Props> {
   }
 
   public componentDidMount() {
-    // for the SSR
     this.embed();
   }
 
