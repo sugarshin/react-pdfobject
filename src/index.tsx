@@ -50,12 +50,21 @@ export class PDFObject extends React.PureComponent<Props> {
     assumptionMode: true,
   };
 
-  public componentDidMount() {
+  private embed = () => {
     const { url, containerId, containerProps, ...options } = this.props;
-
-    // for the SSR
     if (pdfobject) {
       pdfobject.embed(url, `#${containerId}`, options);
+    }
+  }
+
+  public componentDidMount() {
+    this.embed();
+  }
+
+  public componentDidUpdate(prevProps: Props) {
+    // check for different props.url
+    if (prevProps.url !== this.props.url) {
+      this.embed();
     }
   }
 
