@@ -50,7 +50,7 @@ export class PDFObject extends React.PureComponent<Props> {
     assumptionMode: true,
   };
 
-  embed = () => {
+  private embed = () => {
     const { url, containerId, containerProps, ...options } = this.props;
     if (pdfobject) {
       pdfobject.embed(url, `#${containerId}`, options);
