@@ -19,7 +19,12 @@
     "_lint": "tslint -s node_modules/custom-tslint-formatters/formatters -t grouped",
     "lint": "npm run _lint -- -p tsconfig.json",
     "lint:fix": "npm run lint -- --fix",
-    "lint:lint-staged": "npm run _lint -- --fix"
+    "lint:lint-staged": "npm run _lint -- --fix",
+    "update-pkg-version": "npm --no-git-tag-version version",
+    "u": "npm run update-pkg-version",
+    "u:patch": "npm run u -- patch",
+    "u:minor": "npm run u -- minor",
+    "u:major": "npm run u -- major"
   },
   "repository": {
     "type": "git",
