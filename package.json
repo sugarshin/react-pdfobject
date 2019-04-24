@@ -4,7 +4,9 @@
   "description": "A React component for PDFObject",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test": "jest --config jest.config.json",
     "test:coverage": "npm test -- --coverage",
