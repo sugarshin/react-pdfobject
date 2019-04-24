@@ -50,13 +50,6 @@ export class PDFObject extends React.PureComponent<Props> {
     assumptionMode: true,
   };
 
-  private embed = () => {
-    const { url, containerId, containerProps, ...options } = this.props;
-    if (pdfobject) {
-      pdfobject.embed(url, `#${containerId}`, options);
-    }
-  }
-
   public componentDidMount() {
     this.embed();
   }
@@ -71,4 +64,11 @@ export class PDFObject extends React.PureComponent<Props> {
   public render() {
     return <div {...this.props.containerProps} id={this.props.containerId} />;
   }
+
+  private embed = () => {
+    const { url, containerId, containerProps, ...options } = this.props;
+    if (pdfobject) {
+      pdfobject.embed(url, `#${containerId}`, options);
+    }
+  };
 }
