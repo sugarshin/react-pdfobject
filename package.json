@@ -43,7 +43,7 @@
   "devDependencies": {
     "@types/enzyme": "3.9.3",
     "@types/enzyme-adapter-react-16": "1.0.5",
-    "@types/jest": "23.3.14",
+    "@types/jest": "24.9.0",
     "@types/pdfobject": "2.0.6",
     "codecov": "3.5.0",
     "custom-tslint-formatters": "2.4.0",
