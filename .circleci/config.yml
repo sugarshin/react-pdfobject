@@ -6,7 +6,7 @@ references:
   nodejs: &nodejs
     <<: *defaults
     docker:
-      - image: circleci/node:10.14.2
+      - image: circleci/node:10.22.0
   restore_npm_cache: &restore_npm_cache
     name: Restore Cache - Dependency Modules
     keys:
