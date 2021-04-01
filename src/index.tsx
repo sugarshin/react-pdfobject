@@ -50,6 +50,14 @@ export class PDFObject extends React.PureComponent<Props> {
     assumptionMode: true,
   };
 
+  public static pdfobjectversion() {
+    return pdfobject.pdfobjectversion;
+  }
+
+  public static supportsPDFs() {
+    return pdfobject.supportsPDFs;
+  }
+
   public componentDidMount() {
     this.embed();
   }
