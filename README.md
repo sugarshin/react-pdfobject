@@ -20,7 +20,7 @@ import { PDFObject } from 'react-pdfobject'
 <PDFObject url="path/to/example.pdf" />
 ```
 
-### Props
+## Props
 
 ```ts
 interface Props {
@@ -32,7 +32,53 @@ interface Props {
   page?: string | number;
   id?: string;
   fallbackLink?: string | false;
+  pdfOpenParams?: OpenParams;
+  PDFJS_URL?: string;
+  forcePDFJS: boolean;
+  assumptionMode: boolean;
 }
+
+export interface OpenParams {
+  page?: number;
+  zoom?: ZoomMode;
+  nameddest?: string;
+  pagemode?: PageMode;
+  view?: ViewMode;
+}
+
+export type ZoomMode = 'scale' | 'scale,left,top';
+
+export type PageMode = 'bookmarks' | 'thumbs' | 'none';
+
+export type ViewMode =
+  | 'Fit'
+  | 'FitH'
+  | 'FitH,top'
+  | 'FitV'
+  | 'FitV,left'
+  | 'FitB'
+  | 'FitBH'
+  | 'FitBH,top'
+  | 'FitBV'
+  | 'FitBV,left';
+```
+
+## API / Static Methods Supported
+
+#### PDFObject.supportsPDFs [Function]
+
+```ts
+if(PDFObject.supportsPDFs){
+   console.log("Yay, this browser supports inline PDFs.");
+} else {
+   console.log("Boo, inline PDFs are not supported by this browser");
+}
+```
+
+#### PDFObject.pdfobjectversion [Function]
+
+```ts
+console.log(PDFObject.pdfobjectversion); //"2.1.1"
 ```
 
 ref: https://pdfobject.com/#api
