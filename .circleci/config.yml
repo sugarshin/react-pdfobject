@@ -59,6 +59,9 @@ jobs:
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" >> ~/.npmrc
+      - add_ssh_keys:
+          fingerprints:
+            - "2f:7b:b4:a6:db:17:8f:7b:72:27:6b:bd:c3:de:7e:19"
       - run:
           name: Publish package to npm and tagging
           command: /bin/bash .circleci/publish-and-tagging.sh
@@ -68,10 +71,11 @@ workflows:
   test_build_publish:
     jobs:
       - test
-      - build
-      - publish:
+      - build:
           requires:
             - test
+      - publish:
+          requires:
             - build
           filters:
             branches:
