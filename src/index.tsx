@@ -17,6 +17,8 @@ export type ViewMode =
 
 export type ZoomMode = 'scale' | 'scale,left,top';
 
+export declare type ToolbarMode = 0 | 1;
+
 // https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_open_parameters.pdf
 export interface OpenParams {
   page?: number;
@@ -24,6 +26,7 @@ export interface OpenParams {
   nameddest?: string;
   pagemode?: PageMode;
   view?: ViewMode;
+  toolbar?: ToolbarMode;
 }
 
 export interface Props {
